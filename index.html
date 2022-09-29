@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>#2364 User List</title>
+    <title>#2364 User Search Web</title>
 </head>
 <body>
     
 <script>
-        
         var suggestions = [];
-
         var reader = new XMLHttpRequest();
         reader.open('GET', 'list', true);
         reader.overrideMimeType('text/plain; charset=utf-8');
@@ -29,9 +27,7 @@
         var inputText = document.myForm.textBox.value;
         var words = new Array();        
         var texts = "";
-        //console.log(suggestions);
-        //suggestions = ["Always", "azulejo", "to", "change", "an", "azo", "compound", "third"];
-
+ 
         if (inputText != "") {
             for (var i = 0; i < suggestions.length; ++i) {
                 var correct = 1;
@@ -49,13 +45,14 @@
         }
     }    
 </script>
-
+<h1>2364 User Search</h1>
+<h2>검색조건 : UID/NickName</h2>
 <p id="demo"></p>
-<form name="myForm">Rank/uID/NickName <input type="text" name="textBox" onkeyup="myFunction()"/>
-<p>
-    <span id="span1"></span>
-</p>
-
+<form name="myForm">
+    <input type="text" name="textBox" onkeyup="myFunction()"/>
+    <p>
+        <span id="span1"></span>
+    </p>
 </form>
 
 

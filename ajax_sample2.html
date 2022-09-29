@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+        
+        var suggestions = [];
+
+        var reader = new XMLHttpRequest();
+        reader.open('GET', 'list', true);
+        reader.overrideMimeType('text/plain; charset=utf-8');
+        reader.onload = function() {
+            if (reader.status == 200) {
+                suggestions = reader.responseText;
+                suggestions = suggestions.split('\n');
+            };
+            
+        };
+        reader.send(null);
+
+    function myFunction(inputText) {
+        //debugger;
+        var inputText = document.myForm.textBox.value;
+        var words = new Array();        
+        var texts = "";
+        //console.log(suggestions);
+        //suggestions = ["Always", "azulejo", "to", "change", "an", "azo", "compound", "third"];
+
+        if (inputText != "") {
+            for (var i = 0; i < suggestions.length; ++i) {
+                var correct = 1;
+
+                if(suggestions[i].toUpperCase().indexOf(inputText.toUpperCase()) == -1) correct = -1;              
+                if (correct == 1) {
+                    texts += suggestions[i] + '<br>';
+                }
+            }
+            console.log(texts);
+            document.getElementById("span1").innerHTML = texts;
+        }
+        else {
+            document.getElementById("span1").innerHTML = "";
+        }
+    }    
+</script>
+
+<p id="demo"></p>
+<form name="myForm">
+<input type="text" name="textBox" onkeyup="myFunction()"/>
+<p>
+    <span id="span1"></span>
+</p>
+
+</form>
+
+
+</body>
+</html>
